@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Submit to Google Sheets</title>
+  <link rel="stylesheet" href="assets/formv2.css">
+
+</head>
+
+<body>
+
+<div class="container">
+	<!-- code here -->
+	<div class="card">
+		<div class="card-image">	
+			<h2 class="card-heading">
+                <small>"This is the day that the Lord has made; let us rejoice and be glad in it."</small>
+
+				-Psalm 118:24
+				
+			</h2>
+		</div>
+		<form class="card-form" id="myForm">
+			<div class="input">
+				<input type="text" class="input-field" name="Full Name" required/>
+				<label class="input-label">Full name</label>
+			</div>
+						<div class="input">
+				<input type="text" class="input-field" name="Email" required/>
+				<label class="input-label">Email</label>
+			</div>
+            <div class="input">
+				<input type="tel" class="input-field" name="Phone" required/>
+				<label class="input-label">Phone</label>
+			</div>
+        <div class="input">
+           <textarea id="address" name="address" class="input-field" rows="2" required></textarea>
+            <label for="address" class="input-label">Address</label>
+            </div>
+
+			<div class="action">
+				<button class="action-button" id="submitBtn">
+                    <span class="btn-text">Get started</span>
+      <span class="loader" style="display: none;">⏳</span>
+    </button>
+			</div>
+              <div id="status" style="margin-top: 10px;"></div>
+		</form>
+		<div class="card-info">
+			<p>By signing up you are agreeing to our <a href="#">Terms and Conditions</a></p>
+		</div>
+	</div>
+</div>
+<script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycbw5SjikNFaoInmIQnHKffCPcC4OPuEDwbJfPlGFFkoh7aCQhwDRHkR-xGWeEcmuHD-EpQ/exec';
+
+const submitBtn = document.getElementById('submitBtn');
+const btnText = submitBtn.querySelector('.btn-text');
+const loader = submitBtn.querySelector('.loader');
+
+document.getElementById('myForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+
+  // Show loader and disable button
+  submitBtn.disabled = true;
+  btnText.style.display = 'none';
+  loader.style.display = 'inline-block';
+
+  fetch(scriptURL, {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.text())
+  .then(msg => {
+    document.getElementById('status').textContent = "✅ Registration Success!";
+    form.reset();
+  })
+  .catch(err => {
+    document.getElementById('status').textContent = "❌ Error!";
+    console.error(err);
+  })
+  .finally(() => {
+    // Hide loader and enable button
+    submitBtn.disabled = false;
+    btnText.style.display = 'inline';
+    loader.style.display = 'none';
+  });
+});
+</script>
+</body>
+</html>
