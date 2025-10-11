@@ -11,33 +11,53 @@
     <label>Name: <input type="text" name="name" required></label><br>
     <label>Email: <input type="email" name="email" required></label><br>
     <label>Message: <textarea name="message" required></textarea></label><br>
-    <button type="submit">Submit</button>
+    <button type="submit" id="submitBtn">
+  <span class="btn-text">Submit</span>
+  <span class="loader" style="display:none;"></span>
+</button>
+
   </form>
 
   <p id="status"></p>
 
   <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyUl7OEuUNBFeyVEdwqKNF3U2mWlItj65EJEaNnLjO5taUr_Uef8r4z17hfAg63z7W7YQ/exec'; // Replace with your deployed URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw5SjikNFaoInmIQnHKffCPcC4OPuEDwbJfPlGFFkoh7aCQhwDRHkR-xGWeEcmuHD-EpQ/exec';
 
-    document.getElementById('myForm').addEventListener('submit', e => {
-      e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
+const submitBtn = document.getElementById('submitBtn');
+const btnText = submitBtn.querySelector('.btn-text');
+const loader = submitBtn.querySelector('.loader');
 
-      fetch(scriptURL, {
-        method: 'POST',
-        body: formData
-      })
-      .then(res => res.text())
-      .then(msg => {
-        document.getElementById('status').textContent = "✅ Success!";
-        form.reset();
-      })
-      .catch(err => {
-        document.getElementById('status').textContent = "❌ Error!";
-        console.error(err);
-      });
-    });
+document.getElementById('myForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+
+  // Show loader and disable button
+  submitBtn.disabled = true;
+  btnText.style.display = 'none';
+  loader.style.display = 'inline-block';
+
+  fetch(scriptURL, {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.text())
+  .then(msg => {
+    document.getElementById('status').textContent = "✅ Success!";
+    form.reset();
+  })
+  .catch(err => {
+    document.getElementById('status').textContent = "❌ Error!";
+    console.error(err);
+  })
+  .finally(() => {
+    // Hide loader and enable button
+    submitBtn.disabled = false;
+    btnText.style.display = 'inline';
+    loader.style.display = 'none';
+  });
+});
+
   </script>
 </body>
 </html>
