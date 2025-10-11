@@ -169,6 +169,28 @@ input {
 .modal .close:hover {
   color: #000;
 }
+@media (max-width: 480px) {
+  body {
+    padding: 0 1rem;
+  }
+
+  .card {
+    margin: 1rem;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .card-image {
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .modal-content {
+    margin: 5% 1rem;
+    width: calc(100% - 2rem);
+  }
+}
 
 
 
