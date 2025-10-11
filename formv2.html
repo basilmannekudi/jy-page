@@ -46,21 +46,70 @@
               <div id="status" style="margin-top: 10px;"></div>
 		</form>
 		<div class="card-info">
-			<p>By signing up you are agreeing to our <a href="#">Terms and Conditions</a></p>
+			<p>By signing up you are agreeing to our <a href="#" id="openTerms">Terms and Conditions</a></p>
 		</div>
 	</div>
 </div>
+<div id="termsModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Terms and Conditions</h3>
+    <p>
+      <!-- Your terms go here -->
+      By using this form, you agree to abide by our policies. Your data will be handled securely, and you must provide accurate information.
+    </p>
+  </div>
+</div>
 <script>
-const scriptURL = 'https://script.google.com/macros/s/AKfycbw5SjikNFaoInmIQnHKffCPcC4OPuEDwbJfPlGFFkoh7aCQhwDRHkR-xGWeEcmuHD-EpQ/exec';
-
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxuXKBYXQFaMowRl0PymFcRXEsO13nz-aDrIcvaIrnQBh3_ZrSAtsnsYGUNbMyj1mU4Bg/exec';
 const submitBtn = document.getElementById('submitBtn');
 const btnText = submitBtn.querySelector('.btn-text');
 const loader = submitBtn.querySelector('.loader');
+const openTermsBtn = document.getElementById('openTerms');
+const termsModal = document.getElementById('termsModal');
+const closeBtn = termsModal.querySelector('.close');
+
+// Open modal when link is clicked
+openTermsBtn.addEventListener('click', (e) => {
+  e.preventDefault(); // Prevent jumping to top
+  termsModal.style.display = 'block';
+});
+
+// Close modal when (x) is clicked
+closeBtn.addEventListener('click', () => {
+  termsModal.style.display = 'none';
+});
+
+// Close modal when clicking outside the modal content
+window.addEventListener('click', (e) => {
+  if (e.target === termsModal) {
+    termsModal.style.display = 'none';
+  }
+});
+
+
+
 
 document.getElementById('myForm').addEventListener('submit', e => {
   e.preventDefault();
   const form = e.target;
   const formData = new FormData(form);
+ const email = formData.get('Email').trim();
+  const phone = formData.get('Phone').trim();
+
+  // Email validation: must contain '@' and a basic format
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    document.getElementById('status').textContent = "❌ Please enter a valid email address.";
+    return;
+  }
+
+  // Phone validation: must be digits only and at least 10 characters
+  const phonePattern = /^[0-9]{10,}$/;
+  if (!phonePattern.test(phone)) {
+    document.getElementById('status').textContent = "❌ Please enter a valid phone number (digits only, at least 10 numbers).";
+    return;
+  }
 
   // Show loader and disable button
   submitBtn.disabled = true;
