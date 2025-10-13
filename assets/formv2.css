@@ -216,7 +216,7 @@ input {
 	border-radius: 8px;
 	overflow: hidden;
 	padding-bottom: 55%;
-	background-image: url('assets/bg-image.png');
+	background-image: url('/assets/bg-image.png');
 	background-repeat: no-repeat;
 	background-size: 100%;
 	background-position: 0 65%;
