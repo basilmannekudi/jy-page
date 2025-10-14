@@ -2,12 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>JY Chemnitz | Home</title>
     <link rel="stylesheet" href="assets/index.css">
   
   <script>
-    // Fallback in case meta redirect fails
-   // window.location.href = "formv2.html";
+ const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
   </script>
 </head>
 <body>
@@ -16,7 +22,10 @@
   <header>
     <div class="nav-container">
       <div class="logo">JY Chemnitz</div>
-      <nav>
+          <button class="hamburger" id="hamburger">
+      &#9776; <!-- Unicode for three bars -->
+    </button>
+      <nav id="nav-menu">
         <ul>
           <li><a href="#">Home</a></li>
           <li><a href="#">Gallery</a></li>
@@ -42,7 +51,7 @@
       <h2>Upcoming Events</h2>
       <div class="card-grid">
         <div class="card">
-          <img src="/assets/bg-im-ros.png" alt="Event 1">
+          <img src="./assets/bg-im-ros.png" alt="Event 1">
           <div class="card-body">
             <h3>Rosary</h3>
             <p>Join us for a community gathering and service day.</p>
@@ -50,7 +59,7 @@
           </div>
         </div>
         <div class="card">
-          <img src="/assets/bg-im-ev-2.png" alt="Event 2">
+          <img src="./assets/bg-im-ev-2.png" alt="Event 2">
           <div class="card-body">
             <h3>Prayer Meet</h3>
             <p>This is the day that the Lord has made; let us rejoice and be glad in it.</p>
