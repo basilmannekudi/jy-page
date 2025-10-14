@@ -15,9 +15,7 @@
   <header>
     <div class="nav-container">
       <div class="logo">JY Chemnitz</div>
-          <button class="hamburger" id="hamburger">
-      &#9776; <!-- Unicode for three bars -->
-    </button>
+          
       <nav id="nav-menu">
         <ul>
           <li><a href="#">Gallery</a></li>
@@ -26,6 +24,9 @@
         </ul>
       </nav>
     </div>
+    <button class="hamburger" id="hamburger">
+      &#9776; <!-- Unicode for three bars -->
+    </button>
   </header>
 
   <!-- Hero / Banner -->
@@ -88,11 +89,15 @@
   <script>
  const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');
-
+  const navLinks = document.querySelectorAll('#nav-menu a');
   hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
   });
-
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active'); // Close menu on click
+    });
+  });
   const images = [
     'url("./assets/bg-banner-1.png")',
     'url("./assets/bg-banner-2.png")',

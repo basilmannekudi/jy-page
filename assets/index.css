@@ -224,18 +224,22 @@
     /* Hamburger button (hidden on desktop) */
 .hamburger {
   display: none;
-  font-size: 1.8rem;
+  position: absolute;
+  top: .3rem;
+  right: 1rem;
+  font-size: 1.5rem;
   background: none;
   color: white;
   border: none;
   cursor: pointer;
+  z-index: 1000;
 }
 
 /* Navigation styles (desktop) */
 #nav-menu ul {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 /* ========== Modal ========== */
 
@@ -283,14 +287,57 @@ position: fixed;
 
 /* ========== Mobils Styles ========== */
 @media (max-width: 480px) {
+    .hero {
+    height: 35vh;
+  }
+   .hero-content {
+    position: center;
+    text-align: center;
+    max-width: 110%;
+  }
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 1.2rem;
+    
       }
       .hero-content p {
-        font-size: 1rem;
+         font-size: 0.8rem;
+  
       }
+
+
+.hero-content .btn {
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .hero-content.hide-text h1,
+  .hero-content.hide-text p {
+    display: none;
+  }
+
+  .hero-content.move-button {
+    bottom: .5rem;
+    right: .5rem;
+    text-align: right;
+  }
+
   .hamburger {
     display: block;
+  }
+    .nav-container {
+     padding: 0.5rem 1rem;
+  }
+   header {
+    /* Optional: set a fixed height if needed */
+    height: auto;
+  }
+
+  .logo {
+    font-size: 1.2rem; /* Optional: smaller logo */
+  }
+
+  nav ul li a {
+    font-size: 1rem; /* Optional: smaller nav links */
   }
 
   #nav-menu ul {
@@ -320,16 +367,45 @@ position: fixed;
 
 }
 @media (max-width: 300px) {
+
+      .nav-container {
+     padding: 1rem;
+    max-width: 100%;
+  }
     .card-grid {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
+   .hero-content {
+    position: center;
+    text-align: center;
+    max-width: 110%;
+  }
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 1.2rem;
+    
       }
       .hero-content p {
-        font-size: 1rem;
+         font-size: 0.8rem;
+  
       }
+
+.hero-content .btn {
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .hero-content.hide-text h1,
+  .hero-content.hide-text p {
+    display: none;
+  }
+
+  .hero-content.move-button {
+    bottom: .5rem;
+    right: .5rem;
+    text-align: right;
+  }
+
   .hamburger {
     display: block;
   }
@@ -358,5 +434,20 @@ position: fixed;
   padding-left: 0rem;
   padding-right: 0rem;
 }
+    .nav-container {
+     padding: 0.5rem 1rem;
+  }
+   header {
+    /* Optional: set a fixed height if needed */
+    height: auto;
+  }
+
+  .logo {
+    font-size: 1.2rem; /* Optional: smaller logo */
+  }
+
+  nav ul li a {
+    font-size: 1rem; /* Optional: smaller nav links */
+  }
 
 }
