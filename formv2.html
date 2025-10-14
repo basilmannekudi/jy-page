@@ -40,11 +40,10 @@
             <label for="address" class="input-label">Address</label>
             </div>
 
-			<div class="action">
-				<button class="action-button" id="submitBtn">
-                    <span class="btn-text">Get started</span>
-      <span class="loader" style="display: none;">⏳</span>
-    </button>
+			<button class="action-button" id="submitBtn">
+  <span class="btn-text">Get started</span>
+</button>
+
 			</div>
               <div id="status" style="margin-top: 10px;"></div>
 		</form>
@@ -68,14 +67,35 @@
 
   </div>
 </div>
+
+
+<!-- Fullscreen loader overlay -->
+<div id="loaderOverlay" style="display: none;">
+  <div class="loader-wrapper" id="fancyLoader">
+    <div class="loader">
+      <span><span></span><span></span><span></span><span></span></span>
+      <div class="base">
+        <span></span>
+        <div class="face"></div>
+      </div>
+    </div>
+    <div class="longfazers">
+      <span></span><span></span><span></span><span></span>
+    </div>
+     <!-- Your message below the loader -->
+  <div id="loaderMessage">Getting you there...</div>
+  </div>
+</div>
+
 <script>
 const scriptURL = 'https://script.google.com/macros/s/AKfycbxnStTdTf_B2GC6huPhOvKuOMqgfhXug0Ro2C1PaomVqMs5slmqDmErr3hyhuIJ4gZPdw/exec';
 const submitBtn = document.getElementById('submitBtn');
 const btnText = submitBtn.querySelector('.btn-text');
-const loader = submitBtn.querySelector('.loader');
+const loader = document.getElementById('fancyLoader');
 const openTermsBtn = document.getElementById('openTerms');
 const termsModal = document.getElementById('termsModal');
 const closeBtn = termsModal.querySelector('.close');
+const loaderOverlay = document.getElementById('loaderOverlay');
 
 window.addEventListener('load', () => {
   termsModal.style.display = 'block';
@@ -123,10 +143,11 @@ document.getElementById('myForm').addEventListener('submit', e => {
     return;
   }
 
+
   // Show loader and disable button
   submitBtn.disabled = true;
   btnText.style.display = 'none';
-  loader.style.display = 'inline-block';
+  loaderOverlay.style.display = 'flex';
 
   fetch(scriptURL, {
     method: 'POST',
@@ -145,7 +166,7 @@ document.getElementById('myForm').addEventListener('submit', e => {
     // Hide loader and enable button
     submitBtn.disabled = false;
     btnText.style.display = 'inline';
-    loader.style.display = 'none';
+       loaderOverlay.style.display = 'none';
   });
 });
 </script>
