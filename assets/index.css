@@ -164,6 +164,30 @@
       font-size: 1rem;
     }
 
+
+.card-btn {
+  display: inline-block;
+  background: #e63946;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1;             /* 👈 Ensures consistent text height */
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  height: auto;               /* 👈 Prevent unwanted default height */
+  vertical-align: middle;     /* 👈 Align inline elements properly */
+}
+
+
+.card-btn:hover {
+  background: #d62839;
+}
+
+
+
     /* ========== Footer ========== */
     footer {
       background: #222;
