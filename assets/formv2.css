@@ -147,12 +147,15 @@ input {
 /* Modal content box */
 .modal-content {
   background-color: #fff;
-  margin: 10% auto;
+    top: 50%;
+  left: 50%;
   padding: 20px;
   border-radius: 8px;
   width: 90%;
   max-width: 500px;
-  position: relative;
+  position: fixed;
+  transform: translate(-50%, -50%); /* Centers the modal */
+  overflow: hidden;
 }
 
 /* Close button */
@@ -444,11 +447,13 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 .success-modal .modal-content {
   background: white;
   padding: 20px;
+   width: 100%;
   position: relative;
   border-radius: 8px;
   width: 300px;
@@ -459,7 +464,7 @@ input {
   position: absolute;
   right: 10px;
   top: 5px;
-  font-size: 20px;
+  font-size: 30px;
   cursor: pointer;
 }
 
@@ -499,6 +504,14 @@ input {
   body {
     padding: 0 0rem;
   }
+  .success-modal .modal-content {
+
+   width: 90%;
+  border-radius: 8px;
+  width: 290px;
+
+}
+
 
   .card {
     margin: 0rem;
@@ -520,7 +533,7 @@ input {
   }
 
   .modal-content {
-    margin: 5% 1rem;
+   
     width: calc(100% - 2rem);
   }
 }
@@ -573,6 +586,13 @@ input {
   body {
     padding: 0 0rem;
   }
+    .success-modal .modal-content {
+
+   width: 90%;
+  border-radius: 8px;
+  width: 290px;
+
+}
 
   .card {
     margin: 0rem;
@@ -609,7 +629,7 @@ input {
 	}
 
   .modal-content {
-    margin: 5% 1rem;
+   
     width: calc(100% - 2rem);
   }
 }
