@@ -6,6 +6,8 @@
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <title>JY Chemnitz | Home</title>
     <link rel="stylesheet" href="assets/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   
 
 </head>
@@ -36,7 +38,7 @@
     <div class="hero-content">
       <h1>God Gives Us Power</h1>
       <p>Jesus is holy, loving, and worthy of all worship and devotion. Join us as we experience His presence.</p>
-      <button class="btn">Get Involved</button>
+      <button class="btn" id="getInvolvedBtn">Get Involved</button>
     </div>
   </section>
 
@@ -60,8 +62,12 @@
           <img src="./assets/bg-im-eng-mass.png" alt="Event 1">
           <div class="card-body">
             <h3>English Holy Mass</h3>
-            <p>Join us for a community gathering and service day. <br><br> <strong>Every Third Sunday</strong></p>
-            <button class="card-btn open-modal-btn" data-image="./assets/img-ros-info.jpeg">View Location</button>
+            <p>Join us for a community gathering and service day.   <br><br> <i class="fas fa-map-marker-alt" style="margin-right: 6px; color: red;">
+            </i> <strong>St. Johannes Nepomuk</strong>
+        <br> <i class="fas fa-calendar-alt" style="margin-right: 6px; color: #555;"></i> <strong>Every Third Sunday</strong>
+            <br> <i class="fas fa-clock" style="margin-right: 6px; color: #555;"></i><strong>17:00</strong>
+          </p>
+            <button class="card-btn open-loc-modal-btn">View Location</button>
 
           </div>
         </div>
@@ -96,10 +102,10 @@
 <!-- Location Modal -->
 <div id="locationModal" class="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Our Location</h2>
-      <img src="https://via.placeholder.com/400x200?text=Map+Location" alt="Location Map" />
-      <p><a href="https://maps.google.com" target="_blank">Open in Google Maps</a></p>
+      <span class="close-btn">&times;</span>
+      <h3>St. Johannes Nepomuk</h3>
+      <img src="/assets/im-map.jpg" alt="Location Map" />
+      <p><a href="https://maps.app.goo.gl/JLCB9gvMJRFAbxKN9" target="_blank">Open in Google Maps</a></p>
     </div>
   </div>
 
@@ -108,12 +114,13 @@
     <div class="footer-container">
       <div class="footer-col">
         <h4>About Us</h4>
-        <p>We are a church committed to community, faith, and service to God.</p>
+        <p>A movement under the service of the catholic church</p>
       </div>
 
       <div class="footer-col">
         <h4>Contact</h4>
-        <p>123 Church Street<br/>City, State<br/>+1 234 567 890</p>
+        <a href="mailto:jychemnitzsocial@gmail.com">jychemnitzsocial@gmail.com</a>
+       
       </div>
     </div>
   </footer>
@@ -166,6 +173,7 @@
   setInterval(changeSlide, 5000);
  document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("imageModal");
+    const locmodal = document.getElementById("locationModal");
     const modalImg = document.getElementById("modal-image");
     const closeBtn = document.querySelector(".close-btn");
 
@@ -178,17 +186,36 @@
       });
     });
 
+       document.querySelectorAll(".open-loc-modal-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+locationModal.style.display = "block";
+      });
+    });
+
+    locationModal.querySelector(".close-btn").addEventListener("click", () => {
+    locationModal.style.display = "none";
+  });
+
     // Close modal on X click
     closeBtn.addEventListener("click", () => {
       modal.style.display = "none";
     });
 
+
     // Close on background click
     window.addEventListener("click", (e) => {
       if (e.target === modal) {
         modal.style.display = "none";
+      
+      }
+            if (e.target === locationModal) {
+      
+        locationModal.style.display = "none";
       }
     });
+  });
+  document.getElementById('getInvolvedBtn').addEventListener('click', function () {
+    window.open('https://forms.gle/YWppzxjGa3F6EMek7', '_blank');
   });
 
   </script>
