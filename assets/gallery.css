@@ -1,0 +1,517 @@
+ /* ========== Reset & base ========== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ========== Header & Navigation ========== */
+    header {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.9);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem;
+       margin-left: -.5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      color: #ffffff;
+      font-size: 1.75rem;
+      font-weight: bold;
+        display: flex;
+  align-items: center;  /* vertically center image & text */
+  gap: 10px; 
+    }
+    .logo img {
+  height: 40px;      /* or whatever fits your header */
+  width: auto;
+  vertical-align: middle;
+  margin-right: 8px; /* spacing between logo and text */
+}
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li a {
+      color: #fff;
+      font-weight: 500;
+    }
+
+    /* ========== Hero Section ========== */
+    .hero {
+  position: relative;
+  height: 80vh;
+  background-size: cover;
+  background-position: center;
+  transition: background-image 1s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1;
+}
+.hero.overlay::before {
+  background: rgba(0, 0, 0, 0.4); /* Overlay only when class is added */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 1rem;
+  transition: all 0.5s ease;
+}
+
+.hero-content.hide-text h1,
+.hero-content.hide-text p {
+  display: none;
+}
+
+.hero-content.move-button {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  text-align: right;
+}
+
+.hero-content .btn {
+  background: #e63946;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+    /* ========== Events / Cards Section ========== */
+    .events {
+      background: #f9f9f9;
+      padding: 4rem 1rem;
+    }
+    .events .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .events h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: 10% 85%; 
+    }
+    .card img:hover {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+    .card-body {
+      padding: 1.5rem;
+    }
+    .card-body h3 {
+      margin-bottom: 0.75rem;
+      font-size: 1.3rem;
+    }
+    .card-body p {
+      margin-bottom: 1.25rem;
+      color: #666;
+    }
+    .card-body .card-btn {
+      display: inline-block;
+      background: #e63946;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+
+.card-btn {
+  display: inline-block;
+  background: #e63946;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1;             /* 👈 Ensures consistent text height */
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  text-decoration: none;
+  height: auto;               /* 👈 Prevent unwanted default height */
+  vertical-align: middle;     /* 👈 Align inline elements properly */
+}
+
+
+.card-btn:hover {
+  background: #d62839;
+}
+
+
+
+    /* ========== Footer ========== */
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 2rem 1rem;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+    .footer-col {
+      flex: 1 1 200px;
+    }
+    .footer-col h4 {
+      margin-bottom: 1rem;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li a {
+      color: #ddd;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .footer-col p {
+      color: #ccc;
+    }
+
+
+    /* Hamburger button (hidden on desktop) */
+.hamburger {
+  display: none;
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Navigation styles (desktop) */
+#nav-menu ul {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+}
+/* ========== Modal ========== */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers the modal */
+  width: 90%;
+  max-width: 600px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content img {
+    max-height: 80vh;
+    
+  height: auto;
+  width: auto;
+  object-fit: contain; /* maintain aspect ratio */
+  border-radius: 8px;
+  display: block;
+    margin: 0 auto; 
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+
+/* ========== location modal========== */
+
+#locationModal .modal-content {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+#locationModal h3 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+#locationModal img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  margin: 1rem auto;
+  padding: 8px;
+  background-color: #f4f4f4;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#locationModal p {
+  margin-top: 1rem;
+}
+
+#locationModal a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1rem;
+  background-color: #e63946;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+#locationModal a:hover {
+  background-color: #d62839;
+}
+
+/* ========== location modal end ========== */
+
+
+
+
+
+/* ========== Mobils Styles ========== */
+@media (max-width: 480px) {
+    .hero {
+    height: 35vh;
+  }
+   .hero-content {
+    position: center;
+    text-align: center;
+    max-width: 110%;
+  }
+    .hero-content h1 {
+        font-size: 1.2rem;
+    
+      }
+      .hero-content p {
+         font-size: 0.8rem;
+  
+      }
+
+
+.hero-content .btn {
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .hero-content.hide-text h1,
+  .hero-content.hide-text p {
+    display: none;
+  }
+
+  .hero-content.move-button {
+    bottom: .5rem;
+    right: .5rem;
+    text-align: right;
+  }
+
+  .hamburger {
+    display: block;
+  }
+    .nav-container {
+     padding: 0.5rem .5rem;
+  }
+   header {
+    /* Optional: set a fixed height if needed */
+    height: auto;
+  }
+
+  .logo {
+    font-size: 1.2rem; /* Optional: smaller logo */
+  }
+
+  nav ul li a {
+    font-size: 1rem; /* Optional: smaller nav links */
+  }
+
+  #nav-menu ul {
+    flex-direction: column;
+    background: rgba(0, 0, 0, .8);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 30%;
+    padding: .5rem;
+    display: none;
+  }
+
+  #nav-menu.active ul {
+    display: flex;
+  }
+
+  #nav-menu ul li a {
+    color: #fff;
+    padding: 0.1rem 0;
+    font-size: 1rem;
+  }
+  .container {
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+}
+@media (max-width: 300px) {
+
+      .nav-container {
+     padding: 1rem;
+    max-width: 100%;
+  }
+    .card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+   .hero-content {
+    position: center;
+    text-align: center;
+    max-width: 110%;
+  }
+    .hero-content h1 {
+        font-size: 1.2rem;
+    
+      }
+      .hero-content p {
+         font-size: 0.8rem;
+  
+      }
+
+.hero-content .btn {
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .hero-content.hide-text h1,
+  .hero-content.hide-text p {
+    display: none;
+  }
+
+  .hero-content.move-button {
+    bottom: .5rem;
+    right: .5rem;
+    text-align: right;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  #nav-menu ul {
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    padding: 1rem;
+    display: none;
+  }
+
+  #nav-menu.active ul {
+    display: flex;
+  }
+
+  #nav-menu ul li a {
+    color: #fff;
+    padding: 0.5rem 0;
+    font-size: 1.2rem;
+  }
+  .container {
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+    .nav-container {
+     padding: 0.5rem 1rem;
+  }
+   header {
+    /* Optional: set a fixed height if needed */
+    height: auto;
+  }
+
+  .logo {
+    font-size: 1.2rem; /* Optional: smaller logo */
+  }
+
+  nav ul li a {
+    font-size: 1rem; /* Optional: smaller nav links */
+  }
+
+}
