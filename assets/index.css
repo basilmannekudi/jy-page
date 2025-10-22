@@ -143,6 +143,9 @@
       border-radius: 6px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        max-width: 480px;          /* Set a maximum width */
+  width: 100%;               /* Allow it to shrink on smaller screens */
+  justify-self: center;  
     }
     .card img {
       width: 100%;
