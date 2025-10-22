@@ -233,6 +233,19 @@
       color: #ccc;
     }
 
+   /*card button group */
+
+.card-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+
+   /*card button end*/
+
+
 
     /* Hamburger button (hidden on desktop) */
 .hamburger {
